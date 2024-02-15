@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b05ae1808a41cfa5887525c418f237, type: 3}
+  m_Name: Turrets Container
+  m_EditorClassIdentifier: 
+  <OffensiveTurretsConfigs>k__BackingField:
+  - {fileID: 11400000, guid: f58237a2c6786e34cbc51a8bb8fce19f, type: 2}
+  - {fileID: 11400000, guid: 56268435ffe337846b4eee1923972914, type: 2}
+  <SupportTurretsConfigs>k__BackingField: []
