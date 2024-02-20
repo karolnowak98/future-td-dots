@@ -37,6 +37,96 @@ namespace GlassyCode.FutureTD.Core.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LMB"",
+                    ""type"": ""Value"",
+                    ""id"": ""3498f012-5b49-4a36-aa48-30982559968e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Select1"",
+                    ""type"": ""Button"",
+                    ""id"": ""18442223-4a70-4d77-b6ef-6b7dc9dc7d16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select2"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc195da7-61f6-43cd-8cdf-1b5624ec4bb0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select3"",
+                    ""type"": ""Button"",
+                    ""id"": ""c0ea8027-dd21-46bc-b071-fa1e06bff995"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select4"",
+                    ""type"": ""Button"",
+                    ""id"": ""bf30e872-8012-44a9-ad1b-3b567fb262cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select5"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc0d5d03-5ffd-4a1a-b8a2-79f9c987e515"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select6"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d7618e7-d9f1-435e-9f87-b25071162f75"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select7"",
+                    ""type"": ""Button"",
+                    ""id"": ""132faa2f-e7a0-4411-a438-bb14b755b899"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select8"",
+                    ""type"": ""Button"",
+                    ""id"": ""1224aad1-7fb1-42dd-89c9-1367b0c885d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select9"",
+                    ""type"": ""Button"",
+                    ""id"": ""834aaeaa-0e2e-4c70-bee2-ade11bd9f171"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -149,6 +239,116 @@ namespace GlassyCode.FutureTD.Core.Input
                     ""action"": ""MoveCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c30aecb-ad79-4a0e-aa13-f4f71fc081f1"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LMB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3b585f2-0188-4c02-85c3-c388016659c5"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96a28a3b-0288-442e-b389-a4da86bbc5a2"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eed0b85d-1141-4f73-be20-42f9e8016a69"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a30dd5f2-cdf8-478f-b62e-9059280d5e5a"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c486d7e-f4a3-4b38-9afb-7019974f24c3"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10533d5f-02f1-4f66-a361-70f7aedf6e3e"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""107a5df2-f8b6-485c-b59e-db8ee9f47f04"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d7d3a9a6-74f0-45b2-bf35-960e1a2f1f8e"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1dadeb68-0184-4f4d-af18-e1a2c7a5e281"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select9"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -158,6 +358,16 @@ namespace GlassyCode.FutureTD.Core.Input
             // GamePlay
             m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
             m_GamePlay_MoveCamera = m_GamePlay.FindAction("MoveCamera", throwIfNotFound: true);
+            m_GamePlay_LMB = m_GamePlay.FindAction("LMB", throwIfNotFound: true);
+            m_GamePlay_Select1 = m_GamePlay.FindAction("Select1", throwIfNotFound: true);
+            m_GamePlay_Select2 = m_GamePlay.FindAction("Select2", throwIfNotFound: true);
+            m_GamePlay_Select3 = m_GamePlay.FindAction("Select3", throwIfNotFound: true);
+            m_GamePlay_Select4 = m_GamePlay.FindAction("Select4", throwIfNotFound: true);
+            m_GamePlay_Select5 = m_GamePlay.FindAction("Select5", throwIfNotFound: true);
+            m_GamePlay_Select6 = m_GamePlay.FindAction("Select6", throwIfNotFound: true);
+            m_GamePlay_Select7 = m_GamePlay.FindAction("Select7", throwIfNotFound: true);
+            m_GamePlay_Select8 = m_GamePlay.FindAction("Select8", throwIfNotFound: true);
+            m_GamePlay_Select9 = m_GamePlay.FindAction("Select9", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -220,11 +430,31 @@ namespace GlassyCode.FutureTD.Core.Input
         private readonly InputActionMap m_GamePlay;
         private List<IGamePlayActions> m_GamePlayActionsCallbackInterfaces = new List<IGamePlayActions>();
         private readonly InputAction m_GamePlay_MoveCamera;
+        private readonly InputAction m_GamePlay_LMB;
+        private readonly InputAction m_GamePlay_Select1;
+        private readonly InputAction m_GamePlay_Select2;
+        private readonly InputAction m_GamePlay_Select3;
+        private readonly InputAction m_GamePlay_Select4;
+        private readonly InputAction m_GamePlay_Select5;
+        private readonly InputAction m_GamePlay_Select6;
+        private readonly InputAction m_GamePlay_Select7;
+        private readonly InputAction m_GamePlay_Select8;
+        private readonly InputAction m_GamePlay_Select9;
         public struct GamePlayActions
         {
             private @GameInput m_Wrapper;
             public GamePlayActions(@GameInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @MoveCamera => m_Wrapper.m_GamePlay_MoveCamera;
+            public InputAction @LMB => m_Wrapper.m_GamePlay_LMB;
+            public InputAction @Select1 => m_Wrapper.m_GamePlay_Select1;
+            public InputAction @Select2 => m_Wrapper.m_GamePlay_Select2;
+            public InputAction @Select3 => m_Wrapper.m_GamePlay_Select3;
+            public InputAction @Select4 => m_Wrapper.m_GamePlay_Select4;
+            public InputAction @Select5 => m_Wrapper.m_GamePlay_Select5;
+            public InputAction @Select6 => m_Wrapper.m_GamePlay_Select6;
+            public InputAction @Select7 => m_Wrapper.m_GamePlay_Select7;
+            public InputAction @Select8 => m_Wrapper.m_GamePlay_Select8;
+            public InputAction @Select9 => m_Wrapper.m_GamePlay_Select9;
             public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -237,6 +467,36 @@ namespace GlassyCode.FutureTD.Core.Input
                 @MoveCamera.started += instance.OnMoveCamera;
                 @MoveCamera.performed += instance.OnMoveCamera;
                 @MoveCamera.canceled += instance.OnMoveCamera;
+                @LMB.started += instance.OnLMB;
+                @LMB.performed += instance.OnLMB;
+                @LMB.canceled += instance.OnLMB;
+                @Select1.started += instance.OnSelect1;
+                @Select1.performed += instance.OnSelect1;
+                @Select1.canceled += instance.OnSelect1;
+                @Select2.started += instance.OnSelect2;
+                @Select2.performed += instance.OnSelect2;
+                @Select2.canceled += instance.OnSelect2;
+                @Select3.started += instance.OnSelect3;
+                @Select3.performed += instance.OnSelect3;
+                @Select3.canceled += instance.OnSelect3;
+                @Select4.started += instance.OnSelect4;
+                @Select4.performed += instance.OnSelect4;
+                @Select4.canceled += instance.OnSelect4;
+                @Select5.started += instance.OnSelect5;
+                @Select5.performed += instance.OnSelect5;
+                @Select5.canceled += instance.OnSelect5;
+                @Select6.started += instance.OnSelect6;
+                @Select6.performed += instance.OnSelect6;
+                @Select6.canceled += instance.OnSelect6;
+                @Select7.started += instance.OnSelect7;
+                @Select7.performed += instance.OnSelect7;
+                @Select7.canceled += instance.OnSelect7;
+                @Select8.started += instance.OnSelect8;
+                @Select8.performed += instance.OnSelect8;
+                @Select8.canceled += instance.OnSelect8;
+                @Select9.started += instance.OnSelect9;
+                @Select9.performed += instance.OnSelect9;
+                @Select9.canceled += instance.OnSelect9;
             }
 
             private void UnregisterCallbacks(IGamePlayActions instance)
@@ -244,6 +504,36 @@ namespace GlassyCode.FutureTD.Core.Input
                 @MoveCamera.started -= instance.OnMoveCamera;
                 @MoveCamera.performed -= instance.OnMoveCamera;
                 @MoveCamera.canceled -= instance.OnMoveCamera;
+                @LMB.started -= instance.OnLMB;
+                @LMB.performed -= instance.OnLMB;
+                @LMB.canceled -= instance.OnLMB;
+                @Select1.started -= instance.OnSelect1;
+                @Select1.performed -= instance.OnSelect1;
+                @Select1.canceled -= instance.OnSelect1;
+                @Select2.started -= instance.OnSelect2;
+                @Select2.performed -= instance.OnSelect2;
+                @Select2.canceled -= instance.OnSelect2;
+                @Select3.started -= instance.OnSelect3;
+                @Select3.performed -= instance.OnSelect3;
+                @Select3.canceled -= instance.OnSelect3;
+                @Select4.started -= instance.OnSelect4;
+                @Select4.performed -= instance.OnSelect4;
+                @Select4.canceled -= instance.OnSelect4;
+                @Select5.started -= instance.OnSelect5;
+                @Select5.performed -= instance.OnSelect5;
+                @Select5.canceled -= instance.OnSelect5;
+                @Select6.started -= instance.OnSelect6;
+                @Select6.performed -= instance.OnSelect6;
+                @Select6.canceled -= instance.OnSelect6;
+                @Select7.started -= instance.OnSelect7;
+                @Select7.performed -= instance.OnSelect7;
+                @Select7.canceled -= instance.OnSelect7;
+                @Select8.started -= instance.OnSelect8;
+                @Select8.performed -= instance.OnSelect8;
+                @Select8.canceled -= instance.OnSelect8;
+                @Select9.started -= instance.OnSelect9;
+                @Select9.performed -= instance.OnSelect9;
+                @Select9.canceled -= instance.OnSelect9;
             }
 
             public void RemoveCallbacks(IGamePlayActions instance)
@@ -264,6 +554,16 @@ namespace GlassyCode.FutureTD.Core.Input
         public interface IGamePlayActions
         {
             void OnMoveCamera(InputAction.CallbackContext context);
+            void OnLMB(InputAction.CallbackContext context);
+            void OnSelect1(InputAction.CallbackContext ctx);
+            void OnSelect2(InputAction.CallbackContext context);
+            void OnSelect3(InputAction.CallbackContext context);
+            void OnSelect4(InputAction.CallbackContext context);
+            void OnSelect5(InputAction.CallbackContext context);
+            void OnSelect6(InputAction.CallbackContext context);
+            void OnSelect7(InputAction.CallbackContext context);
+            void OnSelect8(InputAction.CallbackContext context);
+            void OnSelect9(InputAction.CallbackContext context);
         }
     }
 }

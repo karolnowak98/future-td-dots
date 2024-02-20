@@ -1,6 +1,5 @@
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GlassyCode.FutureTD.Gameplay.Cameras
 {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GlassyCode.FutureTD.Gameplay.Cameras
 {
-    [CreateAssetMenu(fileName = "Camera Config", menuName = "Configs/Camera")]
+    [CreateAssetMenu(fileName = "Camera Settings", menuName = "Settings/Camera")]
     public class CameraSettings : Settings
     {
         [field: SerializeField] public float CameraMoveSpeed { get; set; }

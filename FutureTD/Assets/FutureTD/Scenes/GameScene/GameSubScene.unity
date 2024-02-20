@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 1517232421}
   - component: {fileID: 1517232424}
   - component: {fileID: 1517232425}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,3 +682,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <GridSettings>k__BackingField: {fileID: 11400000, guid: e91d5da94b3e8ec44adf28b8334e69b2,
     type: 2}
+  <PhysicsShape>k__BackingField: {fileID: 1517232424}

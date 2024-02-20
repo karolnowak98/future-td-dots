@@ -27,7 +27,7 @@ namespace GlassyCode.FutureTD.Core.Grid.Systems
                 return;
             
             ref var gridFields = ref gridAspect.GridFields.Value;
-            ref var gridFieldsArray  = ref gridFields.Value;
+            ref var gridFieldsArray  = ref gridFields.Array;
             var fieldSize = gridAspect.FieldSize;
             var divider = gridAspect.GridFieldDivider;
             var offset = gridAspect.GridHeightOffset;
