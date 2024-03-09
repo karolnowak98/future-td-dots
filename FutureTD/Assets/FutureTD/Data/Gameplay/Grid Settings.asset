@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Grid Settings
   m_EditorClassIdentifier: 
   <GridSize>k__BackingField:
-    x: 200
-    y: 200
+    x: 100
+    y: 100
   <FieldSize>k__BackingField: 5

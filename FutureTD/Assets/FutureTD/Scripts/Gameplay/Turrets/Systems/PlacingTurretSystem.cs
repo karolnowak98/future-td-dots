@@ -48,7 +48,7 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
                 {
                     var gridData = SystemAPI.GetSingleton<GridData>();
 
-                    if (gridData.WorldPosIsInGrid(hit.Position))
+                    if (gridData.IsWorldPosInGrid(hit.Position))
                     {
                         Debug.Log(hit.Position);
                     }

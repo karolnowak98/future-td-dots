@@ -9,7 +9,7 @@ namespace GlassyCode.FutureTD.Core.Grid.Components
         public int FieldSize;
         public float HalfOfFieldSize;
         
-        public bool WorldPosIsInGrid(float3 worldPos)
+        public bool IsWorldPosInGrid(float3 worldPos)
         {
             if (!GridFields.IsCreated) return false;
 
@@ -21,6 +21,19 @@ namespace GlassyCode.FutureTD.Core.Grid.Components
                    && worldPos.x <= lastFieldPos.x + HalfOfFieldSize 
                    && worldPos.z >= firstFieldPos.z - HalfOfFieldSize
                    && worldPos.z <= lastFieldPos.z + HalfOfFieldSize;
+        }
+        
+        public GridField? GetGridFieldByWorldPos(float3 worldPos)
+        {
+            if (!GridFields.IsCreated) return null;
+            if (!IsWorldPosInGrid(worldPos)) return null;
+            
+            for (var i = 0; i < GridFields.Value.Array.Length; i++)
+            {
+                    
+            }
+
+            return null;
         }
     }
     
