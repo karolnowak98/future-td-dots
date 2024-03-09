@@ -27,13 +27,33 @@ namespace GlassyCode.FutureTD.Core.Grid.Components
         {
             if (!GridFields.IsCreated) return null;
             if (!IsWorldPosInGrid(worldPos)) return null;
+
+            ref var gridFields = ref GridFields.Value.Array;
             
-            for (var i = 0; i < GridFields.Value.Array.Length; i++)
+            for (var i = 0; i < gridFields.Length; i++)
             {
-                    
+                if (IsPosInGridField(worldPos, gridFields[i].CenterWorldPosition))
+                {
+                    return gridFields[i];
+                }
             }
 
             return null;
+        }
+
+        private bool IsPosInGridField(float3 worldPos, float3 gridFieldCenter)
+        {
+            var leftBottomCorner = new float2(gridFieldCenter.x - HalfOfFieldSize, gridFieldCenter.z - HalfOfFieldSize);
+            var rightTopCorner = new float2(gridFieldCenter.x + HalfOfFieldSize, gridFieldCenter.z + HalfOfFieldSize);
+
+            var worldPosWithoutHeight = new float2(worldPos.x, worldPos.z);
+            
+            var isInside = worldPosWithoutHeight.x >= leftBottomCorner.x &&
+                           worldPosWithoutHeight.x <= rightTopCorner.x &&
+                           worldPosWithoutHeight.y >= leftBottomCorner.y &&
+                           worldPosWithoutHeight.y <= rightTopCorner.y;
+
+            return isInside;
         }
     }
     

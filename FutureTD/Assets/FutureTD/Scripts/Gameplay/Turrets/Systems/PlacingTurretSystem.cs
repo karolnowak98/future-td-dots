@@ -50,12 +50,15 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
 
                     if (gridData.IsWorldPosInGrid(hit.Position))
                     {
-                        Debug.Log(hit.Position);
+                        var gridField = gridData.GetGridFieldByWorldPos(hit.Position);
+                        if (!gridField.HasValue) return;
+                        
+                        //TODO placeturret in right gridfield
+
+                        Debug.Log(gridField.Value.Index.x + ", " + gridField.Value.Index.y);
                     }
                 }
                 
-                //findgridfield on the grid
-                //placeturret in right gridfield
             }
         }
     }

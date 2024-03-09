@@ -11,6 +11,8 @@ namespace GlassyCode.FutureTD.Gameplay.Cameras.Authoring
         {
             public override void Bake(CameraAuthoring authoring)
             {
+                if (CameraManager.Instance == null) return;
+                
                 var entity = GetEntity(TransformUsageFlags.None);
                 
                 AddComponent(entity, new Camera
