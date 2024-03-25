@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec1524899c142b284144484e60c0206, type: 3}
   m_Name: Fire Lord
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 0}
+  <Prefab>k__BackingField: {fileID: 6442936241592295439, guid: cd6d90d080ba91445a854a110207b8df,
+    type: 3}
   <IconSprite>k__BackingField: {fileID: 0}
   <Name>k__BackingField: 0
   <Element>k__BackingField: 0
   <AttackType>k__BackingField: 0
-  <AttackRanges>k__BackingField:
+  <BaseAttackRanges>k__BackingField:
     x: 0
     y: 0
-  <AttackCooldown>k__BackingField: 2
+  <BaseAttackSpeed>k__BackingField: 0
   <ProjectilePrefab>k__BackingField: {fileID: 0}
   <ProjectileSpeed>k__BackingField: 0

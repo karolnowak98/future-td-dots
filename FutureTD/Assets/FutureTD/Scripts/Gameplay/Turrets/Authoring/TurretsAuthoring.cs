@@ -41,6 +41,7 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Authoring
 
                     data[i] = new OffensiveTurretData
                     {
+                        TurretPrefab = GetEntity(currentConfig.Prefab, TransformUsageFlags.Renderable),
                         Name = currentConfig.Name,
                         Element = currentConfig.Element,
                         AttackType = currentConfig.AttackType,

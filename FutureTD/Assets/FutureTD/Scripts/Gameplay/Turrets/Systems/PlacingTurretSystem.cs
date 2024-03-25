@@ -1,11 +1,11 @@
-using GlassyCode.FutureTD.Core.Grid.Components;
-using GlassyCode.FutureTD.Core.Input.Components;
 using Unity.Burst;
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Physics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using GlassyCode.FutureTD.Core.Grid.Components;
+using GlassyCode.FutureTD.Core.Input.Components;
+using GlassyCode.FutureTD.Gameplay.Turrets.Components;
 
 namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
 {
@@ -15,6 +15,7 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
         public void OnCreate(ref SystemState state)
         {
             state.RequireForUpdate<PhysicsWorldSingleton>();
+            state.RequireForUpdate<OffensiveTurretAsset>();
             state.RequireForUpdate<LmbClickInput>();
             state.RequireForUpdate<GridData>();
         }
@@ -52,13 +53,31 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
                     {
                         var gridField = gridData.GetGridFieldByWorldPos(hit.Position);
                         if (!gridField.HasValue) return;
+
+                        var offensiveTurretAsset = SystemAPI.GetSingleton<OffensiveTurretAsset>();
+
+                        if (offensiveTurretAsset.Asset.IsCreated)
+                        {
+                            var data = offensiveTurretAsset.Asset.Value.OffensiveTurretsData[0];
+                            
+                            var entity = state.EntityManager.CreateEntity();
+
+                            state.EntityManager.AddComponentData(entity, data);
+                            state.EntityManager.AddComponentData(entity, new OffensiveTurret
+                            {
+                                CurrentAttackRanges = data.BaseAttackRanges,
+                                CurrentAttackSpeed = data.BaseAttackSpeed
+                            });
+
+                            var newTurret = state.EntityManager.Instantiate(data.TurretPrefab);
+                            state.EntityManager.SetComponentData(newTurret, new Translation { Value = spawnPrefab.Position });
+                        }
                         
                         //TODO placeturret in right gridfield
 
                         Debug.Log(gridField.Value.Index.x + ", " + gridField.Value.Index.y);
                     }
                 }
-                
             }
         }
     }

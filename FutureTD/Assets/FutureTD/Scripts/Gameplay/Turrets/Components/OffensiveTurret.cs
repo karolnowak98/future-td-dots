@@ -13,6 +13,7 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Components
     
     public struct OffensiveTurretData : IComponentData
     {
+        public Entity TurretPrefab;
         public TurretName Name;
         public ElementType Element;
         public AttackType AttackType;
