@@ -1,2 +1,2 @@
 # future-td-dots
-Tower defense game using dots
+Tower defense game created using Unity DOTS.
