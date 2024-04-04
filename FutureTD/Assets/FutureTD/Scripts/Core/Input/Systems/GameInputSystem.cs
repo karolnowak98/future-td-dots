@@ -10,9 +10,8 @@ namespace GlassyCode.FutureTD.Core.Input.Systems
     public partial class GameInputSystem : SystemBase, GameInput.IGamePlayActions
     {
         private Entity _entity;
-        
+        private NativeArray<bool> _selectChoices;
         private GameInput _gameInput;
-        private NativeArray<bool> _selectChoices = new(9, Allocator.Persistent);
         private Vector2 _moveCamera;
         private bool _lmbClick;
         
@@ -31,12 +30,13 @@ namespace GlassyCode.FutureTD.Core.Input.Systems
         protected override void OnCreate()
         {
             _entity = EntityManager.CreateEntity();
+            _selectChoices = new NativeArray<bool>(9, Allocator.Persistent);
 
             EntityManager.AddComponentData(_entity, new MoveCameraInput());
             EntityManager.AddComponentData(_entity, new LmbClickInput());
             EntityManager.AddComponentData(_entity, new SelectInput
             {
-                Values = new NativeArray<bool>(9, Allocator.Persistent)
+                Values = _selectChoices
             });
             
             _gameInput = new GameInput();
@@ -45,7 +45,7 @@ namespace GlassyCode.FutureTD.Core.Input.Systems
         
         protected override void OnDestroy()
         {
-            SystemAPI.GetSingleton<SelectInput>().Values.Dispose();
+            //SystemAPI.GetSingleton<SelectInput>().Values.Dispose();
             _selectChoices.Dispose();
         }
 
