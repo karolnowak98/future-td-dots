@@ -555,7 +555,7 @@ namespace GlassyCode.FutureTD.Core.Input
         {
             void OnMoveCamera(InputAction.CallbackContext context);
             void OnLMB(InputAction.CallbackContext context);
-            void OnSelect1(InputAction.CallbackContext ctx);
+            void OnSelect1(InputAction.CallbackContext context);
             void OnSelect2(InputAction.CallbackContext context);
             void OnSelect3(InputAction.CallbackContext context);
             void OnSelect4(InputAction.CallbackContext context);

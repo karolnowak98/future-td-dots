@@ -6,11 +6,15 @@ using UnityEngine.InputSystem;
 using GlassyCode.FutureTD.Core.Grid.Components;
 using GlassyCode.FutureTD.Core.Input.Components;
 using GlassyCode.FutureTD.Gameplay.Turrets.Components;
+using Unity.Transforms;
 
 namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
 {
     public partial struct PlacingTurretSystem : ISystem
     {
+        private bool isCreated;
+        private Entity newTurret;
+        
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
@@ -54,30 +58,40 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
                         var gridField = gridData.GetGridFieldByWorldPos(hit.Position);
                         if (!gridField.HasValue) return;
 
+                        var gridFieldValue = gridField.Value;
+
                         var offensiveTurretAsset = SystemAPI.GetSingleton<OffensiveTurretAsset>();
 
                         if (offensiveTurretAsset.Asset.IsCreated)
                         {
                             var data = offensiveTurretAsset.Asset.Value.OffensiveTurretsData[0];
-                            
-                            var entity = state.EntityManager.CreateEntity();
 
-                            state.EntityManager.AddComponentData(entity, data);
-                            state.EntityManager.AddComponentData(entity, new OffensiveTurret
+                            if (!isCreated)
+                            {
+                                newTurret = state.EntityManager.Instantiate(data.TurretPrefab);
+                                isCreated = true;
+                            }
+                            
+                            state.EntityManager.AddComponentData(newTurret, new LocalTransform { Position = gridFieldValue.CenterWorldPosition });
+                            state.EntityManager.AddComponentData(newTurret, data);
+                            state.EntityManager.AddComponentData(newTurret, new OffensiveTurret
                             {
                                 CurrentAttackRanges = data.BaseAttackRanges,
                                 CurrentAttackSpeed = data.BaseAttackSpeed
                             });
-
-                            var newTurret = state.EntityManager.Instantiate(data.TurretPrefab);
-                            state.EntityManager.SetComponentData(newTurret, new Translation { Value = spawnPrefab.Position });
                         }
-                        
-                        //TODO placeturret in right gridfield
 
-                        Debug.Log(gridField.Value.Index.x + ", " + gridField.Value.Index.y);
+                        Debug.Log(gridFieldValue.Index.x + ", " + gridFieldValue.Index.y);
                     }
                 }
+            }
+        }
+
+        public void OnDestroy(ref SystemState state)
+        {
+            if (isCreated)
+            {
+                state.EntityManager.DestroyEntity(newTurret);
             }
         }
     }

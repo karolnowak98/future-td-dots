@@ -45,8 +45,8 @@ namespace GlassyCode.FutureTD.Core.Input.Systems
         
         protected override void OnDestroy()
         {
-            _selectChoices.Dispose();
             SystemAPI.GetSingleton<SelectInput>().Values.Dispose();
+            _selectChoices.Dispose();
         }
 
         protected override void OnStartRunning()
