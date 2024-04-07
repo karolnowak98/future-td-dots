@@ -1,6 +1,5 @@
 using GlassyCode.FutureTD.Gameplay.Global.Configs;
 using GlassyCode.FutureTD.Gameplay.Turrets.SO;
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 
@@ -27,11 +26,5 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Components
     public struct OffensiveTurretImmutableAsset : IComponentData
     {
         public BlobAssetReference<OffensiveTurretImmutable> Asset;
-    }
-
-    public struct SpawnBuffer : IBufferElementData
-    {
-        public TurretName Name;
-        public Entity Prefab;
     }
 }

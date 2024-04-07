@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace GlassyCode.FutureTD.Gameplay.Turrets.Authoring
 {
-    public class TurretsAuthoring : MonoBehaviour
+    public class TurretSpawnerAuthoring : MonoBehaviour
     {
         [field: SerializeField] public TurretsContainer Container { get; private set; }
 
-        private class TurretsAuthoringBaker : Baker<TurretsAuthoring>
+        private class TurretsAuthoringBaker : Baker<TurretSpawnerAuthoring>
         {
-            public override void Bake(TurretsAuthoring authoring)
+            public override void Bake(TurretSpawnerAuthoring authoring)
             {
                 var configs = authoring.Container;
 
@@ -29,7 +29,7 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Authoring
                 {
                     var prefabBufferElement = new SpawnBuffer
                     {
-                        Prefab = GetEntity(prefab, TransformUsageFlags.Dynamic)
+                        Prefab = GetEntity(prefab, TransformUsageFlags.Renderable)
                     };
 
                     spawnBuffer.Add(prefabBufferElement);

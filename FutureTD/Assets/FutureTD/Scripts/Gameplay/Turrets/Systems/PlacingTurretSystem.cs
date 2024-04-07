@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using GlassyCode.FutureTD.Core.Grid.Components;
 using GlassyCode.FutureTD.Core.Input.Components;
-using GlassyCode.FutureTD.Gameplay.Global;
 using GlassyCode.FutureTD.Gameplay.Turrets.Components;
+using Unity.Mathematics;
 using Unity.Transforms;
 
 namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
@@ -25,59 +25,8 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
             state.RequireForUpdate<LmbClickInput>();
             state.RequireForUpdate<GridData>();
         }
-
-        public void OnUpdate(ref SystemState state)
-        {
-            var camera = Camera.main;
-            if (camera is null) return;
-            
-            var lmbInput = SystemAPI.GetSingleton<LmbClickInput>();
-            var mousePos = Mouse.current.position.ReadValue();
-            var ecb = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged);
-            
-            if (lmbInput.Clicked)
-            {
-                var ray = camera.ScreenPointToRay(mousePos);
-                var physicsWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
-                var raycastInput = new RaycastInput
-                {
-                    //Colliding with layer with index 6 ("Ground")
-                    Start = ray.origin,
-                    End = ray.GetPoint(1000f),
-                    Filter = new CollisionFilter
-                    {
-                        BelongsTo = 1u << 6, 
-                        CollidesWith = 1u << 6, 
-                        GroupIndex = 0
-                    }
-                };
-
-                if(physicsWorld.CastRay(raycastInput, out var hit))
-                {
-                    var gridData = SystemAPI.GetSingleton<GridData>();
-
-                    if (gridData.IsWorldPosInGrid(hit.Position))
-                    {
-                        var gridField = gridData.GetGridFieldByWorldPos(hit.Position);
-                        if (!gridField.HasValue) return;
-
-                        var gridFieldValue = gridField.Value;
-                        
-                        if (SystemAPI.TryGetSingletonBuffer(out DynamicBuffer<SpawnBuffer> turrets))
-                        {
-                            _newTurret = ecb.Instantiate(turrets[0].Prefab);
-                    
-                            ecb.AddComponent(_newTurret, new LocalTransform
-                            {
-                                Position = gridFieldValue.CenterWorldPosition, 
-                                Scale = 1
-                            });
-                        }
-                    }
-                }
-            }
-        }
-
+        
+        [BurstCompile]
         public void OnDestroy(ref SystemState state)
         {
             // if (_isCreated)
@@ -85,5 +34,71 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
             //     state.EntityManager.DestroyEntity(_newTurret);
             // }
         }
+
+        public void OnUpdate(ref SystemState state)
+        {
+            if (!SystemAPI.GetSingleton<LmbClickInput>().Clicked) return;
+
+            var camera = Camera.main;
+            
+            if (camera is null) return;
+            
+            var mousePos = Mouse.current.position.ReadValue();
+            var ecb = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged);
+            var ray = camera.ScreenPointToRay(mousePos);
+            var physicsWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
+            
+            var raycastInput = new RaycastInput
+            {
+                //Colliding with layer with index 6 ("Ground")
+                Start = ray.origin,
+                End = ray.GetPoint(1000f),
+                Filter = new CollisionFilter
+                {
+                    BelongsTo = 1u << 6, 
+                    CollidesWith = 1u << 6, 
+                    GroupIndex = 0
+                }
+            };
+
+            if (!physicsWorld.CastRay(raycastInput, out var hit)) return;
+            
+            var gridData = SystemAPI.GetSingleton<GridData>();
+
+            if (!gridData.IsWorldPosInGrid(hit.Position)) return;
+            
+            var gridField = gridData.GetGridFieldByWorldPos(hit.Position);
+            
+            if (!gridField.HasValue) return;
+
+            var gridFieldValue = gridField.Value;
+
+            if (!SystemAPI.TryGetSingletonBuffer(out DynamicBuffer<SpawnBuffer> turrets)) return;
+
+            _newTurret = ecb.Instantiate(turrets[0].Prefab);
+
+            var position = new float3(gridFieldValue.CenterWorldPosition.x, hit.Position.y + 0.5f,
+                gridFieldValue.CenterWorldPosition.z);
+                    
+            ecb.SetComponent(_newTurret, new LocalTransform
+            {
+                Position = position,
+                Scale = 1
+            });
+        }
     }
+    
+    /*[BurstCompile]
+    public partial struct PlaceTurretJob : IJobEntity
+    {
+        public float DeltaTime;
+        public float2 MoveCameraInput;
+        
+        private void Execute(CameraAspect cameraAspect)
+        {
+            var position = cameraAspect.Position;
+            position.xz += MoveCameraInput * DeltaTime * cameraAspect.MoveSpeed;
+            cameraAspect.Position = position;
+        }
+    }*/
 }

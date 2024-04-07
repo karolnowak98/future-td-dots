@@ -7,6 +7,6 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.SO
     public class TurretsContainer : Container
     {
         [field: SerializeField] public GameObject[] OffensiveTurrets { get; private set; }
-        [field: SerializeField] public SupportTurretConfig[] SupportTurretsConfigs { get; private set; }
+        [field: SerializeField] public GameObject[] SupportTurretsConfigs { get; private set; }
     }
 }

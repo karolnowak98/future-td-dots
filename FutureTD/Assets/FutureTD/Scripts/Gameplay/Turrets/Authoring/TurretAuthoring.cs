@@ -18,7 +18,7 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Authoring
 
                 if (config is null)
                 {
-                    Debug.LogError(nameof(config) + "is null!");
+                    Debug.LogError(nameof(OffensiveTurretConfig) + "is null!");
                     return;
                 }
                 
