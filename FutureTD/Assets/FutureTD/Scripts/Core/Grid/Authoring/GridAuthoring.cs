@@ -71,7 +71,7 @@ namespace GlassyCode.FutureTD.Core.Grid.Authoring
                         gridFieldsArray[index] = new GridField
                         {
                             Index = new int2(x, y), 
-                            CenterWorldPosition = new float3(xPos, 1000, zPos)
+                            CenterWorldPosition = new float3(xPos, 1, zPos)
                         };
                     
                         zPos += fieldSize;

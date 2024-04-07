@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using GlassyCode.FutureTD.Core.Grid.Components;
 using GlassyCode.FutureTD.Core.Input.Components;
+using GlassyCode.FutureTD.Gameplay.Global;
 using GlassyCode.FutureTD.Gameplay.Turrets.Components;
 using Unity.Transforms;
 
@@ -12,14 +13,15 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
 {
     public partial struct PlacingTurretSystem : ISystem
     {
-        private bool isCreated;
-        private Entity newTurret;
+        private bool _isCreated;
+        private Entity _newTurret;
         
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
+            state.RequireForUpdate<BeginInitializationEntityCommandBufferSystem.Singleton>();
             state.RequireForUpdate<PhysicsWorldSingleton>();
-            state.RequireForUpdate<OffensiveTurretAsset>();
+            state.RequireForUpdate<OffensiveTurretImmutableAsset>();
             state.RequireForUpdate<LmbClickInput>();
             state.RequireForUpdate<GridData>();
         }
@@ -31,6 +33,7 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
             
             var lmbInput = SystemAPI.GetSingleton<LmbClickInput>();
             var mousePos = Mouse.current.position.ReadValue();
+            var ecb = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged);
             
             if (lmbInput.Clicked)
             {
@@ -59,29 +62,17 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
                         if (!gridField.HasValue) return;
 
                         var gridFieldValue = gridField.Value;
-
-                        var offensiveTurretAsset = SystemAPI.GetSingleton<OffensiveTurretAsset>();
-
-                        if (offensiveTurretAsset.Asset.IsCreated)
+                        
+                        if (SystemAPI.TryGetSingletonBuffer(out DynamicBuffer<SpawnBuffer> turrets))
                         {
-                            var data = offensiveTurretAsset.Asset.Value.OffensiveTurretsData[0];
-
-                            if (!isCreated)
+                            _newTurret = ecb.Instantiate(turrets[0].Prefab);
+                    
+                            ecb.AddComponent(_newTurret, new LocalTransform
                             {
-                                newTurret = state.EntityManager.Instantiate(data.TurretPrefab);
-                                isCreated = true;
-                            }
-                            
-                            state.EntityManager.AddComponentData(newTurret, new LocalTransform { Position = gridFieldValue.CenterWorldPosition });
-                            state.EntityManager.AddComponentData(newTurret, data);
-                            state.EntityManager.AddComponentData(newTurret, new OffensiveTurret
-                            {
-                                CurrentAttackRanges = data.BaseAttackRanges,
-                                CurrentAttackSpeed = data.BaseAttackSpeed
+                                Position = gridFieldValue.CenterWorldPosition, 
+                                Scale = 1
                             });
                         }
-
-                        Debug.Log(gridFieldValue.Index.x + ", " + gridFieldValue.Index.y);
                     }
                 }
             }
@@ -89,10 +80,10 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
 
         public void OnDestroy(ref SystemState state)
         {
-            if (isCreated)
-            {
-                state.EntityManager.DestroyEntity(newTurret);
-            }
+            // if (_isCreated)
+            // {
+            //     state.EntityManager.DestroyEntity(_newTurret);
+            // }
         }
     }
 }

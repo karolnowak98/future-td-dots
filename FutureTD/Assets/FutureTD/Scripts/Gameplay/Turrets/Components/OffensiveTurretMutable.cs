@@ -1,35 +1,37 @@
 using GlassyCode.FutureTD.Gameplay.Global.Configs;
 using GlassyCode.FutureTD.Gameplay.Turrets.SO;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 
 namespace GlassyCode.FutureTD.Gameplay.Turrets.Components
 {
-    public struct OffensiveTurret : IComponentData
+    public struct OffensiveTurretMutable : IComponentData
     {
         public uint2 CurrentAttackRanges;
         public float CurrentAttackSpeed;
+        
+        public Entity ProjectilePrefab;
     }
     
-    public struct OffensiveTurretData : IComponentData
+    public struct OffensiveTurretImmutable : IComponentData
     {
-        public Entity TurretPrefab;
         public TurretName Name;
         public ElementType Element;
         public AttackType AttackType;
         public uint2 BaseAttackRanges;
         public float BaseAttackSpeed;
-        public Entity ProjectilePrefab;
         public float ProjectileSpeed;
     }
     
-    public struct OffensiveTurretAsset : IComponentData
+    public struct OffensiveTurretImmutableAsset : IComponentData
     {
-        public BlobAssetReference<OffensiveTurretBlob> Asset;
+        public BlobAssetReference<OffensiveTurretImmutable> Asset;
     }
-    
-    public struct OffensiveTurretBlob
+
+    public struct SpawnBuffer : IBufferElementData
     {
-        public BlobArray<OffensiveTurretData> OffensiveTurretsData;
+        public TurretName Name;
+        public Entity Prefab;
     }
 }

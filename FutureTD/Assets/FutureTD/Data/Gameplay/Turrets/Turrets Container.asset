@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b05ae1808a41cfa5887525c418f237, type: 3}
   m_Name: Turrets Container
   m_EditorClassIdentifier: 
-  <OffensiveTurretsConfigs>k__BackingField:
-  - {fileID: 11400000, guid: f58237a2c6786e34cbc51a8bb8fce19f, type: 2}
-  - {fileID: 11400000, guid: 56268435ffe337846b4eee1923972914, type: 2}
+  <OffensiveTurrets>k__BackingField:
+  - {fileID: 6442936241592295439, guid: b213f38968461f84b835beef7320f9ad, type: 3}
+  - {fileID: 6442936241592295439, guid: cd6d90d080ba91445a854a110207b8df, type: 3}
+  - {fileID: 6442936241592295439, guid: f16c64df00567dc489881a9836aa88de, type: 3}
   <SupportTurretsConfigs>k__BackingField: []

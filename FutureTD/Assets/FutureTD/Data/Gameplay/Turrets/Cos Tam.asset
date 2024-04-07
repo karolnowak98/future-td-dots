@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec1524899c142b284144484e60c0206, type: 3}
+  m_Name: Cos Tam
+  m_EditorClassIdentifier: 
+  <Prefab>k__BackingField: {fileID: 6442936241592295439, guid: b213f38968461f84b835beef7320f9ad,
+    type: 3}
+  <IconSprite>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: 1
+  <Element>k__BackingField: 0
+  <AttackType>k__BackingField: 0
+  <BaseAttackRanges>k__BackingField:
+    x: 0
+    y: 0
+  <BaseAttackSpeed>k__BackingField: 0
+  <ProjectilePrefab>k__BackingField: {fileID: 0}
+  <ProjectileSpeed>k__BackingField: 0
