@@ -8,6 +8,7 @@ using GlassyCode.FutureTD.Core.Input.Components;
 using GlassyCode.FutureTD.Gameplay.Turrets.Components;
 using Unity.Mathematics;
 using Unity.Transforms;
+using IJobEntity = Unity.Entities.IJobEntity;
 
 namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
 {
@@ -70,35 +71,41 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
             var gridField = gridData.GetGridFieldByWorldPos(hit.Position);
             
             if (!gridField.HasValue) return;
+            if (gridField.Value.HasTurret) return;
 
-            var gridFieldValue = gridField.Value;
-
-            if (!SystemAPI.TryGetSingletonBuffer(out DynamicBuffer<SpawnBuffer> turrets)) return;
-
-            _newTurret = ecb.Instantiate(turrets[0].Prefab);
-
-            var position = new float3(gridFieldValue.CenterWorldPosition.x, hit.Position.y + 0.5f,
-                gridFieldValue.CenterWorldPosition.z);
+            new PlaceTurretJob
+            {
+                Ecb = ecb,
+                GridField = gridField.Value,
+                HitPosition = hit.Position
+            }.Schedule();
+            
+            /*gridData.SetGridField(gridField.Value.Index, new GridField
+            {
+                Index = gridField.Value.Index,
+                CenterWorldPosition = gridField.Value.CenterWorldPosition,
+                HasTurret = true
+            });*/
+        }
+    }
+    
+    [BurstCompile]
+    public partial struct PlaceTurretJob : IJobEntity
+    {
+        public EntityCommandBuffer Ecb;
+        public GridField GridField;
+        public float3 HitPosition;
+        
+        private void Execute(in DynamicBuffer<SpawnBuffer> turrets)
+        {
+            var newTurret = Ecb.Instantiate(turrets[0].Prefab);
+            var position = new float3(GridField.CenterWorldPosition.x, HitPosition.y + 0.5f, GridField.CenterWorldPosition.z);
                     
-            ecb.SetComponent(_newTurret, new LocalTransform
+            Ecb.SetComponent(newTurret, new LocalTransform
             {
                 Position = position,
                 Scale = 1
             });
         }
     }
-    
-    /*[BurstCompile]
-    public partial struct PlaceTurretJob : IJobEntity
-    {
-        public float DeltaTime;
-        public float2 MoveCameraInput;
-        
-        private void Execute(CameraAspect cameraAspect)
-        {
-            var position = cameraAspect.Position;
-            position.xz += MoveCameraInput * DeltaTime * cameraAspect.MoveSpeed;
-            cameraAspect.Position = position;
-        }
-    }*/
 }

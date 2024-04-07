@@ -1,5 +1,6 @@
 using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine;
 
 namespace GlassyCode.FutureTD.Core.Grid.Components
 {
@@ -8,7 +9,19 @@ namespace GlassyCode.FutureTD.Core.Grid.Components
         public BlobAssetReference<GridFields> GridFields;
         public int FieldSize;
         public float HalfOfFieldSize;
-        
+
+        /*public void SetGridField(int2 index, GridField field)
+        {
+            if (index.x < 0 || index.x >= FieldSize || index.y < 0 || index.y >= FieldSize)
+            {
+                Debug.LogError("Invalid grid index");
+                return;
+            }
+
+            var gridIndex = index.y * FieldSize + index.x;
+            GridFields[gridIndex] = field;
+        }*/
+         
         public bool IsWorldPosInGrid(float3 worldPos)
         {
             if (!GridFields.IsCreated) return false;
@@ -69,6 +82,6 @@ namespace GlassyCode.FutureTD.Core.Grid.Components
     {
         public int2 Index;
         public float3 CenterWorldPosition;
-        public bool IsWalkable;
+        public bool HasTurret;
     }
 }
