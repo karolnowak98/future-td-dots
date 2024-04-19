@@ -23,11 +23,11 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Authoring
 
                 var entity = GetEntity(TransformUsageFlags.None);
                 
-                var spawnBuffer = AddBuffer<SpawnBuffer>(entity);
+                var spawnBuffer = AddBuffer<TurretSpawnBuffer>(entity);
                 
                 foreach (var prefab in configs.OffensiveTurrets)
                 {
-                    var prefabBufferElement = new SpawnBuffer
+                    var prefabBufferElement = new TurretSpawnBuffer
                     {
                         Prefab = GetEntity(prefab, TransformUsageFlags.Renderable)
                     };

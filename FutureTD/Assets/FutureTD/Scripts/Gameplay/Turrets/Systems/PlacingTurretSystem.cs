@@ -96,7 +96,7 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Systems
         public GridField GridField;
         public float3 HitPosition;
         
-        private void Execute(in DynamicBuffer<SpawnBuffer> turrets)
+        private void Execute(in DynamicBuffer<TurretSpawnBuffer> turrets)
         {
             var newTurret = Ecb.Instantiate(turrets[0].Prefab);
             var position = new float3(GridField.CenterWorldPosition.x, HitPosition.y + 0.5f, GridField.CenterWorldPosition.z);

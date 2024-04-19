@@ -14,11 +14,12 @@ namespace GlassyCode.FutureTD.Gameplay.Turrets.Authoring
         {
             public override void Bake(TurretAuthoring authoring)
             {
+                if (authoring.enabled is false) return;
+                
                 var config = authoring.Config;
-
                 if (config is null)
                 {
-                    Debug.LogError(nameof(OffensiveTurretConfig) + "is null!");
+                    Debug.LogError($"Make sure {nameof(OffensiveTurretConfig)} is not empty at any Turret Authoring!");
                     return;
                 }
                 

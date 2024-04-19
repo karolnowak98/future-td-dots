@@ -1,6 +1,5 @@
 using Unity.Entities;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace GlassyCode.FutureTD.Core.Grid.Components
 {
